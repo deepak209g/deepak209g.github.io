@@ -4,7 +4,14 @@
     "repositoryName": "deepak209g.github.io",
     "branch": "master"
   },
+  "site": {},
+  "socialnetwork": {
+    "linkedin": "https://www.linkedin.com/in/deepak-mishra-b69601b0",
+    "facebook": "https://www.facebook.com/deepakmishra209",
+    "instagram": "https://www.instagram.com/deepak_mishra_/",
+    "github": "deepak209g"
+  },
   "theme": {
-    "name": "Casper"
+    "name": "casper"
   }
 }
