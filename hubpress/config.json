@@ -4,7 +4,11 @@
     "repositoryName": "deepak209g.github.io",
     "branch": "master"
   },
-  "site": {},
+  "site": {
+    "title": "Things I do ..",
+    "description": "",
+    "postsPerPage": "10"
+  },
   "socialnetwork": {
     "linkedin": "https://www.linkedin.com/in/deepak-mishra-b69601b0",
     "facebook": "https://www.facebook.com/deepakmishra209",
