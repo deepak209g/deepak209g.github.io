@@ -11,17 +11,19 @@
   <meta name="msapplication-tap-highlight" content="no">
 
   <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
-  <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#4e8ef7">
   
   <!-- add to homescreen for ios -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="manifest" href="manifest.json">
 
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="application-name" content="listy">
+<meta name="apple-mobile-web-app-title" content="listy">
+<meta name="msapplication-starturl" content="/index.html">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- cordova.js required for cordova apps -->
-  <script src="cordova.js"></script>
-
-  
+ 
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js')
@@ -29,8 +31,7 @@
         .catch(err => console.error('Error', err));
     }
   </script>
-  
-  <link rel="shortcut icon" href="assets/imgs/logo.png">
+
   <link href="build/main.css" rel="stylesheet">
 
 </head>
