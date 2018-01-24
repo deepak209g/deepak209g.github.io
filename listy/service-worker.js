@@ -4,28 +4,39 @@
  */
 
 
-'use strict';
-importScripts('./build/sw-toolbox.js');
-
-self.toolbox.options.cache = {
-  name: 'ionic-cache'
-};
-
-// pre-cache our key assets
-self.toolbox.precache(
-  [
-    './build/main.js',
+var CACHE = 'cache-and-update';
+self.addEventListener('install', function(evt) {
+  console.log('The service worker is being installed.');
+evt.waitUntil(precache());
+});
+self.addEventListener('fetch', function(evt) {
+  console.log('The service worker is serving the asset.');
+ evt.respondWith(fromCache(evt.request));
+evt.waitUntil(update(evt.request));
+});
+function precache() {
+  return caches.open(CACHE).then(function (cache) {
+    return cache.addAll([
+          './build/main.js',
     './build/vendor.js',
     './build/main.css',
     './build/polyfills.js',
     'index.html',
     'manifest.json'
-  ]
-);
-
-// dynamically cache any other local assets
-self.toolbox.router.any('/*', self.toolbox.fastest);
-
-// for any other requests go to the network, cache,
-// and then only use that cached resource if your user goes offline
-self.toolbox.router.default = self.toolbox.cacheFirst;
+    ]);
+  });
+}
+function fromCache(request) {
+  return caches.open(CACHE).then(function (cache) {
+    return cache.match(request).then(function (matching) {
+      return matching || Promise.reject('no-match');
+    });
+  });
+}
+function update(request) {
+  return caches.open(CACHE).then(function (cache) {
+    return fetch(request).then(function (response) {
+      return cache.put(request, response);
+    });
+  });
+}
